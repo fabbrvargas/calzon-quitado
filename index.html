@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Propuesta de charla de Splash Labs para Calzón Quitado — cómo convertimos lo que aprendimos en la universidad en una agencia de contenido para marcas personales, creadores y marcas grandes.">
+<meta name="theme-color" content="#0B0B0D">
+<title>Splash Labs × Calzón Quitado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --fondo:#0B0B0D;
+    --fondo-2:#131317;
+    --fondo-3:#1B1B21;
+    --tx:#F4F1EA;
+    --tx-2:rgba(244,241,234,.68);
+    --tx-3:rgba(244,241,234,.42);
+    --linea:rgba(244,241,234,.12);
+    --linea-2:rgba(244,241,234,.22);
+    --azul:#3D6BFF;      /* creadores · vistas */
+    --azul-suave:rgba(61,107,255,.14);
+    --naranja:#FF6A3D;   /* marcas personales · ventas */
+    --naranja-suave:rgba(255,106,61,.14);
+    --display:'Bricolage Grotesque',system-ui,sans-serif;
+    --serif:'Instrument Serif',Georgia,serif;
+    --texto:'Inter Tight',system-ui,sans-serif;
+    --ancho:1180px;
+    --gutter:clamp(16px,4vw,40px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--fondo);color:var(--tx);font-family:var(--texto);font-size:17px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  img,video{display:block;max-width:100%}
+  a{color:inherit}
+  em,.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+  .envoltura{max-width:var(--ancho);margin:0 auto;padding:0 var(--gutter)}
+  section{position:relative;padding:clamp(80px,12vw,150px) 0}
+  .eyebrow{display:block;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--tx-3)}
+  .eyebrow b{color:var(--tx);font-weight:600}
+  .eyebrow .pt{display:inline-block;vertical-align:middle;width:7px;height:7px;border-radius:50%;background:var(--tx);margin:-2px 10px 0 0}
+  h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.025em;line-height:1.02}
+  h2{font-size:clamp(38px,6.2vw,82px);margin:18px 0 0;max-width:15ch}
+  h2 em{font-size:1.08em}
+  h3{font-size:clamp(22px,2.4vw,30px);letter-spacing:-.02em;line-height:1.1}
+  .lead{font-size:clamp(18px,1.7vw,22px);color:var(--tx-2);max-width:58ch;margin-top:26px}
+  .lead strong{color:var(--tx);font-weight:600}
+  p strong{color:var(--tx);font-weight:600}
+  .c-naranja{color:var(--naranja)} .c-azul{color:var(--azul)}
+
+  /* ---------- barra superior ---------- */
+  .barra{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--gutter);background:linear-gradient(var(--fondo) 30%,rgba(11,11,13,0));transition:background .3s}
+  .barra.solida{background:rgba(11,11,13,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
+  .marca{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+  .marca span{color:var(--tx-3);font-weight:500;margin:0 6px}
+  .indice{display:flex;gap:4px;list-style:none}
+  .indice a{display:block;padding:7px 12px;border-radius:99px;font-size:13.5px;font-weight:500;color:var(--tx-2);text-decoration:none;transition:color .2s,background .2s}
+  .indice a:hover{color:var(--tx)}
+  .indice a.activo{background:var(--tx);color:var(--fondo)}
+  .progreso{position:absolute;left:0;bottom:-1px;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--naranja),var(--azul))}
+  @media (max-width:900px){.indice{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 0;overflow:hidden}
+  .hero .envoltura{width:100%}
+  .hero h1{font-size:clamp(52px,10.4vw,156px);line-height:.92;letter-spacing:-.045em;margin-top:26px;max-width:11ch}
+  .hero h1 em{letter-spacing:-.02em;font-size:1.06em;color:var(--naranja)}
+  .hero h1 .linea2{display:block;color:var(--tx)}
+  .hero h1 .linea2 em{color:var(--azul)}
+  .hero-pie{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(28px,5vw,80px);align-items:end;margin-top:clamp(36px,5vw,60px)}
+  .hero-pie p{font-size:clamp(17px,1.5vw,20px);color:var(--tx-2);max-width:52ch}
+  .hero-pie p strong{color:var(--tx)}
+  .datos-hero{display:grid;gap:14px;border-left:1px solid var(--linea);padding-left:clamp(18px,3vw,36px)}
+  .datos-hero div{display:grid;grid-template-columns:clamp(104px,10.5vw,140px) 1fr;gap:14px;align-items:baseline}
+  .datos-hero b{font-family:var(--display);font-weight:800;font-size:clamp(22px,2.2vw,28px);letter-spacing:-.02em;white-space:nowrap}
+  .datos-hero span{font-size:14.5px;color:var(--tx-2);line-height:1.35}
+  .sticker{position:absolute;top:clamp(96px,14vh,150px);right:clamp(16px,6vw,90px);width:clamp(118px,13vw,170px);aspect-ratio:1;border-radius:50%;background:var(--tx);color:var(--fondo);display:grid;place-items:center;text-align:center;transform:rotate(12deg);box-shadow:0 20px 50px rgba(0,0,0,.4);z-index:2}
+  .sticker svg{position:absolute;inset:0;width:100%;height:100%;animation:girar 22s linear infinite}
+  .sticker text{font-family:var(--texto);font-weight:600;font-size:9.6px;letter-spacing:.2em;text-transform:uppercase;fill:var(--fondo)}
+  .sticker .centro{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,30px);line-height:.9}
+  @keyframes girar{to{transform:rotate(360deg)}}
+  .cinta{margin-top:clamp(50px,8vh,90px);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);overflow:hidden;white-space:nowrap;padding:16px 0}
+  .cinta-pista{display:inline-flex;animation:cinta 38s linear infinite}
+  .cinta span{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.4vw,30px);letter-spacing:-.01em;padding:0 22px;display:inline-flex;align-items:center;gap:44px}
+  .cinta span::after{content:"✺";color:var(--tx-3);font-size:.7em}
+  .cinta span:nth-child(3n+1){color:var(--naranja)} .cinta span:nth-child(3n+2){color:var(--azul)}
+  @keyframes cinta{to{transform:translateX(-50%)}}
+  @media (max-width:820px){
+    .hero-pie{grid-template-columns:1fr}
+    .datos-hero{border-left:0;padding-left:0;border-top:1px solid var(--linea);padding-top:22px}
+    .sticker{top:auto;bottom:auto;position:relative;right:auto;width:104px;margin:0 0 14px auto;transform:rotate(10deg)}
+    .hero{padding-top:90px}
+  }
+
+  /* ---------- propuesta ---------- */
+  .propuesta{padding:clamp(70px,9vw,110px) 0 0}
+  .prop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:22px;overflow:hidden;margin-top:28px}
+  .prop-grid div{background:var(--fondo-2);padding:clamp(20px,2.4vw,28px)}
+  .prop-grid .tit{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--tx-3);margin-bottom:10px}
+  .prop-grid b{display:block;font-family:var(--display);font-size:clamp(19px,1.7vw,22px);letter-spacing:-.015em;line-height:1.15}
+  .prop-grid p{color:var(--tx-2);font-size:15px;line-height:1.45}
+  .prop-nota{margin-top:18px;color:var(--tx-3);font-size:15px}
+  @media (max-width:900px){.prop-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.prop-grid{grid-template-columns:1fr}}
+
+  /* ---------- camino ---------- */
+  .camino-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.5vw,28px);margin-top:clamp(48px,6vw,80px)}
+  .carrera{background:var(--fondo-2);border:1px solid var(--linea);border-radius:22px;padding:clamp(24px,3vw,36px)}
+  .carrera .num{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tx-3);font-weight:600}
+  .carrera h3{margin:14px 0 6px}
+  .carrera .verbo{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.2vw,28px);color:var(--tx-2)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .chips span{font-size:14px;padding:6px 13px;border-radius:99px;border:1px solid var(--linea-2);color:var(--tx-2)}
+  .union{position:relative;height:90px}
+  .union svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .union path{fill:none;stroke:var(--linea-2);stroke-width:1.5;stroke-dasharray:5 6;vector-effect:non-scaling-stroke}
+  .resultado{position:relative;border-radius:26px;padding:clamp(28px,4vw,52px);background:
+      radial-gradient(120% 140% at 0% 0%,rgba(255,106,61,.22),transparent 55%),
+      radial-gradient(120% 140% at 100% 100%,rgba(61,107,255,.25),transparent 55%),var(--fondo-3);
+    border:1px solid var(--linea-2);display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(20px,4vw,60px);align-items:center}
+  .resultado h3{font-size:clamp(32px,4.4vw,58px);letter-spacing:-.035em;line-height:.98}
+  .resultado p{color:var(--tx-2);font-size:clamp(16px,1.4vw,19px)}
+  .cita{margin-top:clamp(60px,8vw,110px);display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,40px);align-items:start}
+  .cita .comillas{font-family:var(--serif);font-size:clamp(90px,12vw,170px);line-height:.7;color:var(--naranja)}
+  .cita blockquote{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,54px);letter-spacing:-.03em;line-height:1.06;max-width:22ch}
+  .cita blockquote em{color:var(--azul)}
+  .cita figcaption{margin-top:18px;color:var(--tx-3);font-size:15px}
+  .consejos{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:22px;overflow:hidden;margin-top:clamp(50px,6vw,80px)}
+  .consejos div{background:var(--fondo);padding:clamp(22px,3vw,34px)}
+  .consejos b{display:block;font-family:var(--display);font-size:clamp(19px,1.8vw,23px);letter-spacing:-.015em;line-height:1.15;margin-bottom:10px}
+  .consejos p{color:var(--tx-2);font-size:15.5px}
+  .consejos .n{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--tx-3);display:block;margin-bottom:12px}
+  @media (max-width:820px){
+    .camino-grid,.resultado,.consejos{grid-template-columns:1fr}
+    .union{height:56px}
+  }
+
+  /* ---------- qué hacemos ---------- */
+  .publicos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,22px);margin-top:clamp(48px,6vw,72px)}
+  .publico{border-radius:22px;border:1px solid var(--linea);padding:clamp(24px,3vw,34px);background:var(--fondo-2);display:flex;flex-direction:column;gap:14px;text-decoration:none;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s}
+  .publico:hover{transform:translateY(-4px);border-color:var(--linea-2)}
+  .publico .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center}
+  .publico .ic svg{width:22px;height:22px}
+  .publico.pn .ic{background:var(--naranja-suave);color:var(--naranja)}
+  .publico.pa .ic{background:var(--azul-suave);color:var(--azul)}
+  .publico.ph .ic{background:rgba(244,241,234,.08);color:var(--tx)}
+  .publico p{color:var(--tx-2);font-size:15.5px;flex:1}
+  .publico .ver{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px}
+  .servicios{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;align-items:center}
+  .servicios .tit{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);font-weight:600;margin-right:6px}
+  .servicios span:not(.tit){font-size:14.5px;padding:7px 14px;border-radius:99px;background:var(--fondo-3);color:var(--tx-2)}
+  @media (max-width:900px){.publicos{grid-template-columns:1fr}}
+
+  /* ---------- moneda ---------- */
+  .monedas{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(14px,2vw,26px);align-items:stretch;margin-top:clamp(50px,6vw,80px)}
+  .moneda{border-radius:26px;padding:clamp(26px,3.4vw,42px);border:1px solid var(--linea);position:relative;overflow:hidden}
+  .moneda.a{background:linear-gradient(160deg,rgba(61,107,255,.2),rgba(61,107,255,.03) 60%),var(--fondo-2)}
+  .moneda.n{background:linear-gradient(160deg,rgba(255,106,61,.2),rgba(255,106,61,.03) 60%),var(--fondo-2)}
+  .ficha{width:clamp(76px,8vw,96px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;margin-bottom:24px;position:relative}
+  .ficha::before{content:"";position:absolute;inset:7px;border-radius:50%;border:1.5px dashed currentColor;opacity:.5}
+  .ficha svg{width:40%;height:40%}
+  .moneda.a .ficha{background:var(--azul);color:#fff;box-shadow:0 0 0 8px rgba(61,107,255,.12)}
+  .moneda.n .ficha{background:var(--naranja);color:#fff;box-shadow:0 0 0 8px rgba(255,106,61,.12)}
+  .moneda .quien{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--tx-3)}
+  .moneda h3{font-size:clamp(40px,5vw,66px);letter-spacing:-.04em;margin:6px 0 16px}
+  .moneda.a h3{color:var(--azul)} .moneda.n h3{color:var(--naranja)}
+  .moneda>p{color:var(--tx-2);font-size:16.5px;max-width:42ch}
+  .moneda dl{margin-top:24px;border-top:1px solid var(--linea)}
+  .moneda dl div{display:grid;grid-template-columns:112px 1fr;gap:12px;padding:13px 0;border-bottom:1px solid var(--linea);font-size:15px}
+  .moneda dt{color:var(--tx-3)} .moneda dd{color:var(--tx)}
+  .vs{display:grid;place-items:center}
+  .vs span{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--tx-3)}
+  .meta-comun{margin-top:22px;text-align:center;font-size:15.5px;color:var(--tx-2)}
+  .meta-comun b{color:var(--tx)}
+  .contraste{display:grid;grid-template-columns:1fr 1fr;margin-top:clamp(60px,8vw,100px);border-radius:24px;overflow:hidden;border:1px solid var(--linea)}
+  .contraste>div{padding:clamp(26px,3.5vw,44px)}
+  .contraste .tipica{background:var(--fondo-2)}
+  .contraste .nuestra{background:var(--tx);color:var(--fondo)}
+  .contraste .tag{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.55}
+  .contraste h3{margin:14px 0 18px;font-size:clamp(24px,2.6vw,34px)}
+  .contraste ul{list-style:none;display:grid;gap:10px}
+  .contraste li{display:flex;gap:12px;font-size:16px;line-height:1.45}
+  .contraste .tipica li{color:var(--tx-2)}
+  .contraste .tipica li::before{content:"—";color:var(--tx-3)}
+  .contraste .nuestra li::before{content:"→";font-weight:600}
+  .contraste .tipica h3{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--naranja);color:var(--tx-2)}
+  .pasos-tit{margin-top:clamp(70px,9vw,120px);display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+  .pasos-tit h3{font-size:clamp(30px,3.8vw,50px);letter-spacing:-.03em;max-width:16ch}
+  .pasos-tit p{color:var(--tx-2);max-width:40ch;font-size:16px}
+  .pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,18px);margin-top:36px;counter-reset:paso}
+  .paso{border-top:2px solid var(--tx);padding-top:20px}
+  .paso::before{counter-increment:paso;content:"0" counter(paso);font-family:var(--serif);font-style:italic;font-size:36px;color:var(--tx-3);display:block;line-height:1;margin-bottom:14px}
+  .paso b{display:block;font-family:var(--display);font-size:21px;letter-spacing:-.015em;margin-bottom:8px}
+  .paso p{color:var(--tx-2);font-size:15.5px}
+  @media (max-width:900px){
+    .monedas{grid-template-columns:1fr}
+    .vs{padding:2px 0}
+    .contraste{grid-template-columns:1fr}
+    .pasos{grid-template-columns:1fr 1fr;gap:28px 18px}
+  }
+  @media (max-width:520px){.pasos{grid-template-columns:1fr}.moneda dl div{grid-template-columns:96px 1fr}}
+
+  /* ---------- casos ---------- */
+  .caso-cab{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,5vw,80px);align-items:end}
+  .caso-cab .lead{margin-top:0}
+  .tag-caso{display:inline-flex;gap:10px;align-items:center;padding:7px 14px 7px 8px;border-radius:99px;font-size:13.5px;font-weight:600}
+  .tag-caso i{font-style:normal;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:11px;color:#fff}
+  .caso-n .tag-caso{background:var(--naranja-suave);color:var(--naranja)} .caso-n .tag-caso i{background:var(--naranja)}
+  .caso-a .tag-caso{background:var(--azul-suave);color:var(--azul)} .caso-a .tag-caso i{background:var(--azul)}
+  .caso h2{max-width:14ch}
+  .caso-n h2 em{color:var(--naranja)} .caso-a h2 em{color:var(--azul)}
+  .metricas{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:20px;overflow:hidden;margin-top:clamp(40px,5vw,64px)}
+  .metricas.cuatro{grid-template-columns:repeat(4,1fr)}
+  .metricas div{background:var(--fondo);padding:clamp(20px,2.6vw,30px)}
+  .metricas b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(30px,3.6vw,48px);letter-spacing:-.035em;line-height:1}
+  .caso-n .metricas b.acento{color:var(--naranja)} .caso-a .metricas b.acento{color:var(--azul)}
+  .metricas span{display:block;margin-top:10px;color:var(--tx-2);font-size:14.5px;line-height:1.35}
+  .fuente{margin-top:12px;font-size:12.5px;color:var(--tx-3)}
+  .captura{margin-top:clamp(28px,4vw,44px);border-radius:20px;overflow:hidden;border:1px solid var(--linea-2);background:#0e1015;position:relative}
+  .captura img{width:100%;height:auto}
+  .captura .etq{position:absolute;left:14px;top:14px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(11,11,13,.8);backdrop-filter:blur(6px);padding:6px 11px;border-radius:99px;color:var(--tx-2)}
+  .explica{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.5vw,28px);margin-top:clamp(50px,6vw,80px)}
+  .bloque{border-radius:22px;padding:clamp(24px,3vw,36px);background:var(--fondo-2);border:1px solid var(--linea)}
+  .bloque .tit{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--tx-3)}
+  .bloque h3{margin:12px 0 14px}
+  .bloque p{color:var(--tx-2);font-size:16px}
+  .bloque p+p{margin-top:12px}
+  .bloque.destacado{background:var(--fondo-3);border-color:var(--linea-2)}
+  .angulos{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .angulos span{font-size:14px;padding:7px 13px;border-radius:10px;background:var(--naranja-suave);color:#FFB49C}
+  .angulos span.base{background:var(--tx);color:var(--fondo);font-weight:600}
+  .reels{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,24px);margin-top:clamp(50px,6vw,80px)}
+  .reel{margin:0}
+  .marco{position:relative;aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:var(--fondo-3);border:1px solid var(--linea-2);box-shadow:0 30px 70px -30px rgba(0,0,0,.8)}
+  .marco video{width:100%;height:100%;object-fit:cover}
+  .marco .mute{position:absolute;right:12px;top:12px;width:30px;height:30px;border-radius:50%;background:rgba(11,11,13,.6);backdrop-filter:blur(6px);display:grid;place-items:center}
+  .marco .mute svg{width:15px;height:15px;color:var(--tx-2)}
+  .reel figcaption{margin-top:14px}
+  .reel figcaption b{display:block;font-family:var(--display);font-size:18px;letter-spacing:-.01em}
+  .reel figcaption span{display:block;color:var(--tx-2);font-size:14.5px;margin-top:4px;line-height:1.4}
+  .reel .tipo{display:inline-block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:4px 9px;border-radius:6px;margin-bottom:8px}
+  .caso-n .reel .tipo{background:var(--naranja-suave);color:var(--naranja)}
+  .caso-a .reel .tipo{background:var(--azul-suave);color:var(--azul)}
+  .leccion{margin-top:clamp(50px,6vw,80px);display:flex;gap:clamp(16px,3vw,32px);align-items:center;padding:clamp(24px,3.5vw,40px);border-radius:24px}
+  .caso-n .leccion{background:var(--naranja);color:#1a0b05}
+  .caso-a .leccion{background:var(--azul);color:#fff}
+  .leccion .ico{font-family:var(--serif);font-style:italic;font-size:clamp(46px,5vw,70px);line-height:.8;flex:none}
+  .leccion p{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.8vw,36px);letter-spacing:-.025em;line-height:1.1}
+  .leccion p small{display:block;font-family:var(--texto);font-weight:500;font-size:15px;letter-spacing:0;opacity:.75;margin-top:10px;line-height:1.45}
+  .capturas-kesto{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(12px,2vw,20px);margin-top:clamp(28px,4vw,44px)}
+  .capturas-kesto .captura{margin-top:0}
+  .capturas-kesto .ancha{grid-column:1/-1}
+  /* flujo de dos vías */
+  .flujo{margin-top:clamp(50px,6vw,80px);border-radius:26px;border:1px solid var(--linea);background:var(--fondo-2);padding:clamp(24px,4vw,52px)}
+  .flujo-cab{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:end}
+  .flujo-cab h3{font-size:clamp(28px,3.4vw,44px);letter-spacing:-.03em;max-width:15ch}
+  .flujo-cab p{color:var(--tx-2);max-width:42ch;font-size:16px}
+  .diagrama{display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,40px);align-items:center;margin-top:clamp(30px,4vw,48px)}
+  .nodo-vistas{width:clamp(130px,15vw,190px);aspect-ratio:1;border-radius:50%;background:var(--azul);display:grid;place-items:center;text-align:center;position:relative;box-shadow:0 0 0 10px rgba(61,107,255,.12),0 0 0 22px rgba(61,107,255,.06)}
+  .nodo-vistas b{font-family:var(--display);font-size:clamp(22px,2.4vw,30px);letter-spacing:-.02em;display:block;line-height:1}
+  .nodo-vistas span{font-size:13px;opacity:.85;display:block;margin-top:6px}
+  .vias{display:grid;gap:14px}
+  .via{display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:center;padding:18px 20px;border-radius:18px;background:var(--fondo);border:1px solid var(--linea);position:relative}
+  .via::before{content:"";position:absolute;right:100%;top:50%;width:clamp(18px,3vw,40px);border-top:1.5px dashed var(--linea-2)}
+  .via .nn{width:44px;height:44px;border-radius:12px;background:var(--azul-suave);color:var(--azul);display:grid;place-items:center;font-family:var(--display);font-weight:800}
+  .via b{display:block;font-family:var(--display);font-size:19px;letter-spacing:-.01em}
+  .via span{display:block;color:var(--tx-2);font-size:14.5px;margin-top:3px;line-height:1.4}
+  .via .pago{font-family:var(--display);font-weight:800;font-size:22px;color:var(--azul)}
+  .bucle{margin-top:24px;padding-top:20px;border-top:1px solid var(--linea);display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:15px;color:var(--tx-2)}
+  .bucle b{color:var(--tx);font-weight:600}
+  .bucle i{font-style:normal;color:var(--azul)}
+  @media (max-width:900px){
+    .caso-cab,.explica{grid-template-columns:1fr}
+    .metricas.cuatro{grid-template-columns:1fr 1fr}
+    .capturas-kesto{grid-template-columns:1fr}
+    .diagrama{grid-template-columns:1fr;justify-items:center}
+    .vias{width:100%}
+    .via::before{display:none}
+  }
+  @media (max-width:680px){
+    .reels{grid-template-columns:repeat(3,72%);overflow-x:auto;scroll-snap-type:x mandatory;margin-left:calc(var(--gutter)*-1);margin-right:calc(var(--gutter)*-1);padding:0 var(--gutter) 6px;scrollbar-width:none}
+    .reels::-webkit-scrollbar{display:none}
+    .reel{scroll-snap-align:center}
+    .metricas{grid-template-columns:1fr}
+    .via{grid-template-columns:40px 1fr;padding:16px}
+    .via .pago{display:none}
+    .leccion{flex-direction:column;align-items:flex-start}
+  }
+  .deslizar{display:none;margin-top:12px;font-size:13px;color:var(--tx-3)}
+  @media (max-width:680px){.deslizar{display:block}}
+
+  /* ---------- white label ---------- */
+  .wl{background:var(--tx);color:var(--fondo)}
+  .wl .eyebrow{color:rgba(11,11,13,.5)} .wl .eyebrow b{color:var(--fondo)} .wl .eyebrow .pt{background:var(--fondo)}
+  .wl .lead{color:rgba(11,11,13,.68)} .wl .lead strong{color:var(--fondo)}
+  .wl h2 em{color:var(--azul)}
+  .logos{display:flex;flex-wrap:wrap;gap:clamp(10px,1.4vw,16px);margin-top:clamp(36px,5vw,56px)}
+  .logos span{font-family:var(--display);font-weight:800;font-size:clamp(22px,3vw,40px);letter-spacing:-.03em;padding:10px clamp(16px,2vw,26px);border:1.5px solid rgba(11,11,13,.16);border-radius:99px}
+  .obras{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(10px,1.6vw,18px);margin-top:clamp(44px,6vw,72px)}
+  .obra{position:relative;border-radius:20px;overflow:hidden;background:#111;cursor:pointer;border:0;padding:0;color:#fff;text-align:left;font:inherit;isolation:isolate}
+  .obra video{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .obra:hover video{transform:scale(1.04)}
+  .obra::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.78));z-index:1;pointer-events:none}
+  .obra .info{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;display:flex;justify-content:space-between;align-items:end;gap:10px}
+  .obra .info b{display:block;font-family:var(--display);font-size:clamp(17px,1.6vw,21px);letter-spacing:-.01em;line-height:1.1}
+  .obra .info .txt span{display:block;font-size:13px;opacity:.75;margin-top:3px}
+  .obra .play{flex:none;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);display:grid;place-items:center;transition:background .25s,transform .25s}
+  .obra:hover .play{background:#fff;color:#000;transform:scale(1.06)}
+  .obra .play svg{width:14px;height:14px;margin-left:2px}
+  .obra:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
+  .obra.v{grid-column:span 3;aspect-ratio:9/16}
+  .obra.h{grid-column:span 6;aspect-ratio:16/9}
+  .wl-pie{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,60px);margin-top:clamp(50px,6vw,80px);align-items:start}
+  .wl-pie .bloque{background:transparent;border-color:rgba(11,11,13,.14)}
+  .wl-pie .bloque .tit{color:rgba(11,11,13,.5)}
+  .wl-pie .bloque p{color:rgba(11,11,13,.7)}
+  .wl-pie .bloque.oscuro{background:var(--fondo);color:var(--tx);border-color:var(--fondo)}
+  .wl-pie .bloque.oscuro p{color:var(--tx-2)} .wl-pie .bloque.oscuro .tit{color:var(--tx-3)}
+  @media (max-width:900px){
+    .obra.v{grid-column:span 6}.obra.h{grid-column:span 12}
+    .wl-pie{grid-template-columns:1fr}
+  }
+
+  /* ---------- cierre ---------- */
+  .lecciones{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.6vw,18px);margin-top:clamp(48px,6vw,72px)}
+  .lec{border-radius:20px;padding:22px 20px 24px;background:var(--fondo-2);border:1px solid var(--linea);display:flex;flex-direction:column;gap:12px;min-height:220px}
+  .lec .n{font-family:var(--serif);font-style:italic;font-size:40px;line-height:.8;color:var(--tx-3)}
+  .lec b{font-family:var(--display);font-size:20px;letter-spacing:-.015em;line-height:1.12}
+  .lec p{color:var(--tx-2);font-size:14.5px;margin-top:auto}
+  .lec:nth-child(1) .n,.lec:nth-child(4) .n{color:var(--naranja)}
+  .lec:nth-child(3) .n,.lec:nth-child(5) .n{color:var(--azul)}
+  @media (max-width:1000px){.lecciones{grid-template-columns:1fr 1fr}.lec{min-height:0}}
+  @media (max-width:520px){.lecciones{grid-template-columns:1fr}}
+  .final{text-align:center;padding-bottom:60px}
+  .final h2{margin:22px auto 0;font-size:clamp(46px,8.6vw,124px);max-width:none;letter-spacing:-.045em;line-height:.92}
+  .final h2 em{color:var(--naranja)}
+  .final .lead{margin:28px auto 0}
+  .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:99px;font-weight:600;font-size:16px;text-decoration:none;transition:transform .2s,background .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.primario{background:var(--tx);color:var(--fondo)}
+  .btn.sec{border:1px solid var(--linea-2);color:var(--tx)}
+  .btn svg{width:18px;height:18px}
+  footer{border-top:1px solid var(--linea);padding:28px 0 40px;color:var(--tx-3);font-size:13.5px}
+  footer .envoltura{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .atajo kbd{font-family:var(--texto);font-size:12px;border:1px solid var(--linea-2);border-radius:5px;padding:1px 6px;margin:0 2px}
+  @media (hover:none){.atajo{display:none}}
+
+  /* ---------- lightbox ---------- */
+  .visor{position:fixed;inset:0;z-index:60;background:rgba(5,5,7,.94);display:none;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px)}
+  .visor.abierto{display:flex}
+  .visor video{max-width:100%;max-height:calc(100vh - 120px);max-height:calc(100svh - 120px);border-radius:14px;background:#000}
+  .visor .cerrar{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;border:1px solid var(--linea-2);background:rgba(255,255,255,.06);color:var(--tx);font-size:24px;cursor:pointer;display:grid;place-items:center}
+  .visor .pie-visor{position:absolute;left:0;right:0;bottom:18px;text-align:center;color:var(--tx-2);font-size:14px}
+  .visor .pie-visor b{color:var(--tx);font-family:var(--display);font-size:16px}
+
+  /* ---------- aparición ---------- */
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .rv.ok{opacity:1;transform:none}
+  .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    .cinta-pista,.sticker svg{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="barra" id="barra">
+  <a class="marca" href="#inicio">Splash Labs<span>×</span>Calzón Quitado</a>
+  <ul class="indice">
+    <li><a href="#camino">El camino</a></li>
+    <li><a href="#hacemos">Qué hacemos</a></li>
+    <li><a href="#moneda">La moneda</a></li>
+    <li><a href="#lian">Lian</a></li>
+    <li><a href="#kesto">Kesto</a></li>
+    <li><a href="#white-label">White label</a></li>
+  </ul>
+  <div class="progreso" id="progreso"></div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="envoltura">
+    <div class="sticker" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text><textPath href="#circ">Propuesta · Calzón Quitado · 2026 · </textPath></text></svg>
+      <span class="centro">sin<br>filtro</span>
+    </div>
+    <span class="eyebrow rv"><span class="pt"></span>Propuesta de charla para <b>Calzón Quitado</b></span>
+    <h1 class="rv d1">El camino no viene <em>marcado.</em><span class="linea2">Se <em>abre.</em></span></h1>
+    <div class="hero-pie">
+      <p class="rv d2">Soy <strong>Fabián</strong>, fundador de <strong>Splash Labs</strong>. Me senté en estas mismas aulas: estudié <strong>Producción para Medios de Comunicación</strong> y después <strong>Publicidad</strong>. Juntando lo que aprendí en las dos, armé una agencia de contenido digital que trabaja desde Ecuador para clientes de varios países. Armamos esta página para que el equipo de <strong>Calzón Quitado</strong> nos conozca y pueda evaluar si nuestra charla encaja en el evento.</p>
+      <div class="datos-hero rv d3">
+        <div><b class="c-naranja">$5–6K</b><span>al mes en ventas para una marca personal con 1.6K seguidores</span></div>
+        <div><b class="c-azul">+1.000M</b><span>de vistas en el canal de un creador con el que trabajamos</span></div>
+        <div><b>5 marcas</b><span>grandes con proyectos dirigidos por nosotros en white label</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cinta" aria-hidden="true">
+    <div class="cinta-pista">
+      <span>Marcas personales</span><span>Creadores de contenido</span><span>White label</span><span>Marcas personales</span><span>Creadores de contenido</span><span>White label</span>
+      <span>Marcas personales</span><span>Creadores de contenido</span><span>White label</span><span>Marcas personales</span><span>Creadores de contenido</span><span>White label</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROPUESTA ============ -->
+<section class="propuesta" id="propuesta">
+  <div class="envoltura">
+    <span class="eyebrow rv"><span class="pt"></span>La charla que proponemos</span>
+    <div class="prop-grid rv d1">
+      <div><span class="tit">Título tentativo</span><b>El camino no viene marcado: se abre</b></div>
+      <div><span class="tit">Para quién</span><p>Estudiantes de carreras creativas que no tienen claro hacia dónde llevar lo que están aprendiendo.</p></div>
+      <div><span class="tit">De qué hablamos</span><p>Valorar tus habilidades, entender mercados digitales que pocos conocen y cómo la calidad abre puertas.</p></div>
+      <div><span class="tit">Con qué</span><p>Casos reales con resultados y videos: una marca personal, un creador y proyectos para marcas grandes.</p></div>
+    </div>
+    <p class="prop-nota rv">Lo que sigue es un adelanto de la charla, escrito como se lo contaríamos a los estudiantes.</p>
+  </div>
+</section>
+
+<!-- ============ EL CAMINO ============ -->
+<section id="camino">
+  <div class="envoltura">
+    <span class="eyebrow rv"><span class="pt"></span><b>01</b> · El camino</span>
+    <h2 class="rv d1">Dos carreras. <em>Una</em> sola ventaja.</h2>
+    <p class="lead rv d2">Nadie me ofreció un puesto que se llamara “redes sociales y contenido”. Lo que hice fue mirar lo que ya sabía hacer y preguntarme <strong>dónde valía más</strong>.</p>
+
+    <div class="camino-grid">
+      <div class="carrera rv">
+        <span class="num">Primera carrera</span>
+        <h3>Producción para Medios de Comunicación</h3>
+        <span class="verbo">me enseñó a <em>hacer.</em></span>
+        <div class="chips"><span>Cámara</span><span>Edición</span><span>Narrativa</span><span>Ritmo</span><span>Sonido</span><span>Dirección</span></div>
+      </div>
+      <div class="carrera rv d1">
+        <span class="num">Segunda carrera</span>
+        <h3>Publicidad</h3>
+        <span class="verbo">me enseñó a <em>pensar.</em></span>
+        <div class="chips"><span>Estrategia</span><span>Insight</span><span>Concepto</span><span>Persuasión</span><span>Público objetivo</span><span>Marca</span></div>
+      </div>
+    </div>
+    <div class="union" aria-hidden="true">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M25,0 C25,60 50,40 50,100"/><path d="M75,0 C75,60 50,40 50,100"/></svg>
+    </div>
+    <div class="resultado rv">
+      <h3>Redes sociales <em>y</em> contenido</h3>
+      <p>Es exactamente donde las dos se cruzan. Un video que se ve bien pero no tiene una razón para existir no vende. Una gran idea mal producida no la ve nadie. <strong style="color:var(--tx)">Hacer y pensar, juntos</strong>: eso es lo que hoy vendemos.</p>
+    </div>
+
+    <figure class="cita rv">
+      <span class="comillas" aria-hidden="true">“</span>
+      <div>
+        <blockquote>Tu carrera no es un carril. Es una <em>caja de herramientas.</em></blockquote>
+        <figcaption>Lo que me hubiera gustado escuchar sentado ahí.</figcaption>
+      </div>
+    </figure>
+
+    <div class="consejos rv">
+      <div><span class="n">i.</span><b>No hay un solo camino marcado.</b><p>Lo que estudias no define un único trabajo. Puedes abrir uno nuevo, incluso uno que todavía no tiene nombre.</p></div>
+      <div><span class="n">ii.</span><b>Las habilidades se suman.</b><p>Editar + entender al consumidor = contenido que vende. Lo valioso suele estar en la combinación, no en una sola habilidad.</p></div>
+      <div><span class="n">iii.</span><b>Aprende a valorar lo que sabes.</b><p>Algo que a ti te parece básico, como editar rápido o entender una marca, es algo por lo que alguien afuera está dispuesto a pagar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUÉ HACEMOS ============ -->
+<section id="hacemos" style="padding-top:0">
+  <div class="envoltura">
+    <span class="eyebrow rv"><span class="pt"></span><b>02</b> · Qué hacemos</span>
+    <h2 class="rv d1">Hacemos que las redes <em>generen dinero.</em></h2>
+    <p class="lead rv d2">Splash Labs es una agencia de <strong>producción y distribución de contenido digital</strong>. Trabajamos con tres tipos de clientes, y a cada uno lo atendemos distinto.</p>
+
+    <div class="publicos">
+      <a class="publico pn rv" href="#lian">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></span>
+        <h3>Marcas personales</h3>
+        <p>Personas que venden un producto o un servicio. Su contenido tiene que convertirse en clientes.</p>
+        <span class="ver c-naranja">Ver caso Lian →</span>
+      </a>
+      <a class="publico pa rv d1" href="#kesto">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+        <h3>Creadores de contenido</h3>
+        <p>Personas cuyo negocio es la atención. Su contenido tiene que conseguir vistas, muchas y seguido.</p>
+        <span class="ver c-azul">Ver caso Kesto →</span>
+      </a>
+      <a class="publico ph rv d2" href="#white-label">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg></span>
+        <h3>White label</h3>
+        <p>Agencias, productoras y empresas que necesitan un equipo de producción detrás. Nosotros hacemos, ellos entregan con su nombre.</p>
+        <span class="ver">Ver proyectos →</span>
+      </a>
+    </div>
+    <div class="servicios rv">
+      <span class="tit">Lo que hacemos</span>
+      <span>Estrategia de contenido</span><span>Guiones y ángulos</span><span>Edición</span><span>Diseño</span><span>Motion graphics</span><span>CGI / VFX</span><span>Clipping</span><span>Distribución</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LA MONEDA ============ -->
+<section id="moneda" style="padding-top:0">
+  <div class="envoltura">
+    <span class="eyebrow rv"><span class="pt"></span><b>03</b> · La idea central</span>
+    <h2 class="rv d1">Misma meta. <em>Distinta</em> moneda.</h2>
+    <p class="lead rv d2">A creadores y a marcas personales los ayudamos a lo mismo: <strong>ganar más dinero con redes sociales</strong>. Pero no cobran con la misma moneda. Si no entiendes eso, haces el contenido equivocado para el cliente correcto.</p>
+
+    <div class="monedas">
+      <article class="moneda a rv">
+        <div class="ficha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <span class="quien">Creadores de contenido</span>
+        <h3>Vistas</h3>
+        <p>Cada vista paga dos veces: la plataforma le paga por su contenido, y las marcas le pagan por llegar a su audiencia.</p>
+        <dl>
+          <div><dt>Éxito es…</dt><dd>Que lo vean más personas, más seguido</dd></div>
+          <div><dt>Medimos</dt><dd>Vistas, retención, frecuencia</dd></div>
+          <div><dt>Producimos</dt><dd>Volumen, ganchos, clips, constancia</dd></div>
+        </dl>
+      </article>
+      <div class="vs" aria-hidden="true"><span>vs.</span></div>
+      <article class="moneda n rv d1">
+        <div class="ficha"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></div>
+        <span class="quien">Marcas personales</span>
+        <h3>Ventas</h3>
+        <p>Una vista no paga nada por sí sola. Lo que importa es cuánta gente escribe, agenda o compra el producto o servicio.</p>
+        <dl>
+          <div><dt>Éxito es…</dt><dd>Que la persona correcta compre</dd></div>
+          <div><dt>Medimos</dt><dd>Mensajes, agendas, ventas</dd></div>
+          <div><dt>Producimos</dt><dd>Ángulos que tocan un problema real</dd></div>
+        </dl>
+      </article>
+    </div>
+    <p class="meta-comun rv">La meta de los dos es la misma: <b>más dinero.</b> El camino para llegar ahí es otro.</p>
+
+    <div class="contraste rv">
+      <div class="tipica">
+        <span class="tag">Una agencia típica</span>
+        <h3>“Te damos 12 posts al mes”</h3>
+        <ul>
+          <li>El mismo paquete para todos los clientes</li>
+          <li>Empieza por el formato: reels, carruseles, historias</li>
+          <li>Reporta likes y seguidores</li>
+        </ul>
+      </div>
+      <div class="nuestra">
+        <span class="tag">Lo que hacemos nosotros</span>
+        <h3>“¿Con qué moneda cobras tú?”</h3>
+        <ul>
+          <li>Primero entendemos cómo gana dinero el cliente</li>
+          <li>Después diseñamos el entregable que mueve esa moneda</li>
+          <li>Medimos lo que paga: vistas o ventas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pasos-tit rv">
+      <h3>Cómo entender un mercado que <em>no conoces</em></h3>
+      <p>Clipping, marcas faceless, campañas con creadores… Ninguno de estos mercados me lo enseñaron en clase. Así los aprendí:</p>
+    </div>
+    <div class="pasos">
+      <div class="paso rv"><b>Sigue el dinero</b><p>¿Cómo gana plata tu cliente? ¿Anuncios, ventas, campañas con marcas? Esa respuesta define todo lo demás.</p></div>
+      <div class="paso rv d1"><b>Vive en la plataforma</b><p>Consume lo que consume su audiencia hasta entender qué funciona, y sobre todo por qué funciona.</p></div>
+      <div class="paso rv d2"><b>Elige el número que importa</b><p>Un like no siempre es una venta. Encuentra la métrica que de verdad cambia el negocio del cliente.</p></div>
+      <div class="paso rv d3"><b>Diseña al revés</b><p>Del resultado hacia el formato, no del formato hacia el resultado. El entregable es la consecuencia, no el punto de partida.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASO LIAN ============ -->
+<section id="lian" class="caso caso-n" style="padding-top:0">
+  <div class="envoltura">
+    <div class="caso-cab">
+      <div>
+        <span class="tag-caso rv"><i>01</i> Marca personal · moneda: ventas</span>
+        <h2 class="rv d1">1.634 seguidores. <em>$5–6K</em> al mes en ventas.</h2>
+      </div>
+      <p class="lead rv d2"><strong>Lian (LianTech)</strong> ayuda a gamers a tener más FPS y estabilidad en Warzone optimizando su PC. Es una marca personal faceless: nunca muestra su cara, su identidad es un personaje. Y aun así vende.</p>
+    </div>
+
+    <div class="captura rv">
+      <span class="etq">Perfil de Instagram</span>
+      <img src="img/lian-perfil.png" width="1342" height="438" alt="Perfil de Instagram de lianjud6 (LianTech): 63 publicaciones, 1634 seguidores. Bio: te ayudo a tener más FPS y estabilidad en Warzone para tu PC, más de 2.5K clientes satisfechos." loading="lazy">
+    </div>
+
+    <div class="metricas">
+      <div class="rv"><b class="acento">$5–6K</b><span>en ventas al mes generadas con contenido</span></div>
+      <div class="rv d1"><b>1.634</b><span>seguidores: no hace falta ser famoso para vender</span></div>
+      <div class="rv d2"><b>0</b><span>veces que aparece su cara en cámara</span></div>
+    </div>
+
+    <div class="explica">
+      <div class="bloque destacado rv">
+        <span class="tit">La estrategia</span>
+        <h3>Ángulos ganadores</h3>
+        <p>Un ángulo es la puerta por la que entras a vender <strong>lo mismo</strong>. El servicio no cambia; lo que cambia es el problema que tocas en los primeros segundos.</p>
+        <p>Probamos ángulos, vemos cuáles traen clientes y producimos más de los que ganan.</p>
+        <div class="angulos"><span class="base">Optimización de PC</span><span>“Te eliminan y no sabes por qué”</span><span>Input lag</span><span>Milisegundos que cuestan partidas</span><span>Tu equipo vs. tu movimiento</span></div>
+      </div>
+      <div class="bloque rv d1">
+        <span class="tit">Por qué funciona</span>
+        <h3>Habla del problema, no del producto</h3>
+        <p>Su cliente no busca “optimización de PC”: busca dejar de perder partidas. El contenido usa gameplay y texto dinámico para que el problema se entienda en un segundo, <strong>sin sonido y sin cara</strong>.</p>
+        <p>La métrica que miramos no son los likes: son las personas que escriben y agendan.</p>
+      </div>
+    </div>
+
+    <div class="reels">
+      <figure class="reel rv">
+        <div class="marco"><video muted loop playsinline preload="none" poster="img/lian-1.jpg" data-src="videos/lian-1.mp4"></video><span class="mute" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></svg></span></div>
+        <figcaption><span class="tipo">Pieza 01</span><b>“Si en Warzone te eliminan…”</b><span>Abre con la frustración que el cliente ya siente.</span></figcaption>
+      </figure>
+      <figure class="reel rv d1">
+        <div class="marco"><video muted loop playsinline preload="none" poster="img/lian-2.jpg" data-src="videos/lian-2.mp4"></video><span class="mute" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></svg></span></div>
+        <figcaption><span class="tipo">Pieza 02</span><b>“¿Sabes la diferencia…?”</b><span>Una pregunta como gancho para explicar el problema técnico.</span></figcaption>
+      </figure>
+      <figure class="reel rv d2">
+        <div class="marco"><video muted loop playsinline preload="none" poster="img/lian-3.jpg" data-src="videos/lian-3.mp4"></video><span class="mute" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></svg></span></div>
+        <figcaption><span class="tipo">Pieza 03</span><b>Input lag</b><span>Le pone nombre a lo que el jugador siente pero no sabe explicar.</span></figcaption>
+      </figure>
+    </div>
+    <p class="deslizar">Desliza para ver los tres →</p>
+
+    <div class="leccion rv">
+      <span class="ico">!</span>
+      <p>No necesitas millones de seguidores para vender.<small>Necesitas que la persona correcta vea el mensaje correcto. Para una marca personal, mil seguidores que compran valen más que cien mil que solo miran.</small></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASO KESTO ============ -->
+<section id="kesto" class="caso caso-a" style="padding-top:0">
+  <div class="envoltura">
+    <div class="caso-cab">
+      <div>
+        <span class="tag-caso rv"><i>02</i> Creador de contenido · moneda: vistas</span>
+        <h2 class="rv d1">Aquí la moneda son las <em>vistas.</em></h2>
+      </div>
+      <p class="lead rv d2"><strong>Kesto</strong> es creador de contenido gaming. Con él la estrategia es otra: no se trata de vender un servicio, sino de que <strong>su contenido llegue a la mayor cantidad de gente posible</strong>, todos los días.</p>
+    </div>
+
+    <div class="metricas cuatro">
+      <div class="rv"><b class="acento">1,88M</b><span>suscriptores en YouTube</span></div>
+      <div class="rv d1"><b>+1.005M</b><span>vistas totales en el canal</span></div>
+      <div class="rv d2"><b>14,1M</b><span>vistas en los últimos 28 días</span></div>
+      <div class="rv d3"><b>3.755</b><span>videos publicados: el volumen importa</span></div>
+    </div>
+    <p class="fuente">Datos públicos de su canal de YouTube vía Channelytics, septiembre de 2026.</p>
+
+    <div class="capturas-kesto">
+      <div class="captura rv"><span class="etq">Canal · 28 días</span><img src="img/kesto-canal.png" width="1460" height="906" alt="Panel de Channelytics del canal de Kesto: 1.880.000 suscriptores, 14,13 millones de vistas y entre 8,4 y 27 mil dólares de ingreso estimado en los últimos 28 días." loading="lazy"></div>
+      <div class="captura rv d1"><span class="etq">Vistas por mes</span><img src="img/kesto-mensual.png" width="2072" height="738" alt="Gráfico de vistas mensuales de Kesto de noviembre a septiembre, entre unos 9 y 14 millones por mes, cerrando septiembre de 2026 en 14,13 millones." loading="lazy"></div>
+      <div class="captura ancha rv"><span class="etq">Vistas por día</span><img src="img/kesto-diario.png" width="2074" height="830" alt="Tabla diaria de finales de septiembre de 2026: entre 200 mil y casi 800 mil vistas nuevas por día, con más de mil millones de vistas totales." loading="lazy"></div>
+    </div>
+
+    <div class="flujo rv">
+      <div class="flujo-cab">
+        <h3>Una vista, <em>dos</em> formas de cobrar</h3>
+        <p>Por eso para un creador lo que más importa es el volumen de vistas: de ahí sale todo lo demás.</p>
+      </div>
+      <div class="diagrama">
+        <div class="nodo-vistas"><div><b>Vistas</b><span>la moneda</span></div></div>
+        <div class="vias">
+          <div class="via"><span class="nn">1</span><div><b>La plataforma le paga</b><span>YouTube y las demás redes pagan por las reproducciones de su contenido.</span></div><span class="pago">$</span></div>
+          <div class="via"><span class="nn">2</span><div><b>Las marcas lo buscan</b><span>Un perfil con mucho tráfico atrae campañas: las marcas pagan por aparecer frente a su audiencia.</span></div><span class="pago">$$</span></div>
+        </div>
+      </div>
+      <div class="bucle"><b>El ciclo:</b> más clips <i>→</i> más vistas <i>→</i> más ingreso por plataforma <i>→</i> más marcas interesadas <i>→</i> más campañas</div>
+    </div>
+
+    <div class="explica">
+      <div class="bloque destacado rv">
+        <span class="tit">Un mercado que pocos conocen</span>
+        <h3>¿Qué es el clipping?</h3>
+        <p>Tomamos el contenido largo de un creador, como partidas, streams o videos, y lo cortamos en <strong>muchos clips verticales</strong> con los mejores momentos para Shorts, TikTok y Reels.</p>
+        <p>Cada clip es una oportunidad más de que el algoritmo lo recomiende. El creador no tiene que grabar más: su mismo contenido llega a mucha más gente.</p>
+      </div>
+      <div class="bloque rv d1">
+        <span class="tit">Entender lo que necesita</span>
+        <h3>No es un paquete, es una mezcla</h3>
+        <p>A Kesto no le sirve el mismo plan que a Lian. Combinamos tres tipos de pieza según lo que mueve su moneda:</p>
+        <p><strong>Clipping</strong> para volumen, <strong>contenido más editado</strong> para retener y construir marca, y <strong>campañas</strong> para monetizar ese tráfico con marcas.</p>
+      </div>
+    </div>
+
+    <div class="reels">
+      <figure class="reel rv">
+        <div class="marco"><video muted loop playsinline preload="none" poster="img/kesto-clipping.jpg" data-src="videos/kesto-clipping.mp4"></video><span class="mute" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></svg></span></div>
+        <figcaption><span class="tipo">Clipping</span><b>Volumen</b><span>Momentos de partida recortados y listos para el feed vertical.</span></figcaption>
+      </figure>
+      <figure class="reel rv d1">
+        <div class="marco"><video muted loop playsinline preload="none" poster="img/kesto-editado.jpg" data-src="videos/kesto-editado.mp4"></video><span class="mute" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></svg></span></div>
+        <figcaption><span class="tipo">Contenido editado</span><b>Retención</b><span>Más narrativa, gráficos y ritmo para que se queden viendo.</span></figcaption>
+      </figure>
+      <figure class="reel rv d2">
+        <div class="marco"><video muted loop playsinline preload="none" poster="img/kesto-campana.jpg" data-src="videos/kesto-campana.mp4"></video><span class="mute" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></svg></span></div>
+        <figcaption><span class="tipo">Campaña</span><b>Monetización</b><span>Una marca paga por llegar a su audiencia. Las vistas se convierten en contratos.</span></figcaption>
+      </figure>
+    </div>
+    <p class="deslizar">Desliza para ver los tres →</p>
+
+    <div class="leccion rv">
+      <span class="ico">!</span>
+      <p>Entiende qué necesita cada cliente, no qué sueles entregar.<small>Lian y Kesto quieren lo mismo: ganar más dinero con redes. Pero si a Kesto le hubiéramos hecho el contenido de Lian, o al revés, ninguno habría crecido.</small></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHITE LABEL ============ -->
+<section id="white-label" class="wl">
+  <div class="envoltura">
+    <span class="eyebrow rv"><span class="pt"></span><b>04</b> · White label</span>
+    <h2 class="rv d1">La calidad abre puertas que no llevan <em>tu nombre.</em></h2>
+    <p class="lead rv d2">White label es producir para agencias, productoras y empresas que entregan el trabajo con su marca. El cliente final no siempre sabe que fuimos nosotros, y está bien: <strong>gracias a la calidad que manejamos</strong>, hemos dirigido proyectos para marcas como estas.</p>
+
+    <div class="logos rv">
+      <span>Krispy Kreme</span><span>Cyrano</span><span>Coca-Cola</span><span>Multicines</span><span>San Patricio</span>
+    </div>
+
+    <div class="obras">
+      <button class="obra h rv" data-full="videos/wl-krispykreme.mp4" data-titulo="Krispy Kreme" data-sub="Valores · motion graphics">
+        <video muted loop playsinline preload="none" poster="img/wl-krispykreme.jpg" data-src="videos/wl-krispykreme-p.mp4"></video>
+        <span class="info"><span class="txt"><b>Krispy Kreme</b><span>Valores · motion graphics</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span></span>
+      </button>
+      <button class="obra h rv d1" data-full="videos/wl-multicines.mp4" data-titulo="Multicines" data-sub="ScreenX · render 3D">
+        <video muted loop playsinline preload="none" poster="img/wl-multicines.jpg" data-src="videos/wl-multicines-p.mp4"></video>
+        <span class="info"><span class="txt"><b>Multicines</b><span>ScreenX · render 3D</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span></span>
+      </button>
+      <button class="obra v rv" data-full="videos/wl-schweppes.mp4" data-titulo="Schweppes · Coca-Cola" data-sub="Receta con producto">
+        <video muted loop playsinline preload="none" poster="img/wl-schweppes.jpg" data-src="videos/wl-schweppes-p.mp4"></video>
+        <span class="info"><span class="txt"><b>Coca-Cola</b><span>Schweppes · receta</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span></span>
+      </button>
+      <button class="obra v rv d1" data-full="videos/wl-cyrano.mp4" data-titulo="Cyrano" data-sub="El sabor de Quito · animación">
+        <video muted loop playsinline preload="none" poster="img/wl-cyrano.jpg" data-src="videos/wl-cyrano-p.mp4"></video>
+        <span class="info"><span class="txt"><b>Cyrano</b><span>Animación · collage</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span></span>
+      </button>
+      <button class="obra v rv d2" data-full="videos/wl-sanpatricio.mp4" data-titulo="San Patricio" data-sub="Avance de obra 2026">
+        <video muted loop playsinline preload="none" poster="img/wl-sanpatricio.jpg" data-src="videos/wl-sanpatricio-p.mp4"></video>
+        <span class="info"><span class="txt"><b>San Patricio</b><span>Avance de obra</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span></span>
+      </button>
+      <button class="obra v rv d3" data-full="videos/wl-sanpatricio2.mp4" data-titulo="San Patricio" data-sub="Recorrido en render 3D">
+        <video muted loop playsinline preload="none" poster="img/wl-sanpatricio2.jpg" data-src="videos/wl-sanpatricio2-p.mp4"></video>
+        <span class="info"><span class="txt"><b>San Patricio</b><span>Render 3D</span></span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg></span></span>
+      </button>
+    </div>
+
+    <div class="wl-pie">
+      <div class="bloque rv">
+        <span class="tit">Por qué importa</span>
+        <h3>La calidad es la carta de presentación</h3>
+        <p>En white label nadie te contrata por tu nombre: te contratan porque el trabajo resiste estar frente a una marca grande. Cada proyecto bien hecho trae el siguiente.</p>
+      </div>
+      <div class="bloque oscuro rv d1">
+        <span class="tit">Para ti</span>
+        <h3>Puedes trabajar para marcas grandes antes de que tu nombre sea grande</h3>
+        <p>El white label es una forma real de entrar a la industria, armar portafolio y facturar mientras construyes tu propia marca.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section id="cierre">
+  <div class="envoltura">
+    <span class="eyebrow rv"><span class="pt"></span><b>05</b> · Lo que se llevarían</span>
+    <h2 class="rv d1">Cinco ideas para <em>llevarse.</em></h2>
+    <div class="lecciones">
+      <div class="lec rv"><span class="n">1</span><b>El camino no viene marcado.</b><p>Lo puedes abrir tú, aunque todavía no tenga nombre.</p></div>
+      <div class="lec rv d1"><span class="n">2</span><b>Tus habilidades valen más juntas.</b><p>Producción + publicidad fue mi combinación. ¿Cuál es la tuya?</p></div>
+      <div class="lec rv d2"><span class="n">3</span><b>Pregunta con qué moneda cobra tu cliente.</b><p>Vistas o ventas: cambia todo lo que produces.</p></div>
+      <div class="lec rv d3"><span class="n">4</span><b>Seguidores no es igual a dinero.</b><p>1.634 seguidores, $5–6K al mes. El público correcto gana.</p></div>
+      <div class="lec rv d4"><span class="n">5</span><b>La calidad abre puertas.</b><p>Aunque la puerta no lleve tu nombre todavía.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final" style="padding-top:0">
+  <div class="envoltura">
+    <span class="eyebrow rv"><span class="pt"></span>Gracias</span>
+    <h2 class="rv d1">Gracias por <em>considerarnos.</em></h2>
+    <p class="lead rv d2">Si creen que esta charla le suma a Calzón Quitado, nos encantaría ser parte. Escríbanme para conversar y coordinar.</p>
+    <div class="btns rv d3">
+      <a class="btn primario" href="https://wa.me/593984712418?text=Hola%20Fabi%C3%A1n%2C%20vimos%20tu%20propuesta%20de%20charla%20para%20Calz%C3%B3n%20Quitado." target="_blank" rel="noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+        Escríbeme por WhatsApp
+      </a>
+      <a class="btn sec" href="#inicio">Volver al inicio ↑</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="envoltura">
+    <span>Splash Labs · Producción y distribución de contenido digital · Ecuador</span>
+    <span class="atajo">Para presentar: <kbd>←</kbd><kbd>→</kbd> avanzan por secciones</span>
+  </div>
+</footer>
+
+<div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Reproductor de video">
+  <button class="cerrar" id="cerrar" aria-label="Cerrar">×</button>
+  <video id="visor-video" controls playsinline></video>
+  <div class="pie-visor" id="pie-visor"></div>
+</div>
+
+<script>
+(function(){
+  // aparición al hacer scroll
+  var rv = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('ok'); io.unobserve(e.target); } });
+    }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+    rv.forEach(function(el){ io.observe(el); });
+  } else { rv.forEach(function(el){ el.classList.add('ok'); }); }
+
+  // videos en bucle sin sonido: cargan y suenan solo cuando están a la vista
+  var loops = document.querySelectorAll('video[data-src]');
+  var vio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v = e.target;
+      if (e.isIntersecting) {
+        if (!v.src) { v.src = v.dataset.src; }
+        v.muted = true;
+        var p = v.play(); if (p && p.catch) p.catch(function(){});
+      } else if (!v.paused) { v.pause(); }
+    });
+  }, {rootMargin:'200px 0px', threshold:.01});
+  loops.forEach(function(v){ v.muted = true; vio.observe(v); });
+
+  // barra: fondo sólido, progreso y sección activa
+  var barra = document.getElementById('barra'), prog = document.getElementById('progreso');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.indice a'));
+  var secciones = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function alScroll(){
+    var y = window.scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    barra.classList.toggle('solida', y > 40);
+    prog.style.transform = 'scaleX(' + (h > 0 ? y / h : 0) + ')';
+    var act = -1;
+    secciones.forEach(function(s, i){ if (s.getBoundingClientRect().top < innerHeight * .4) act = i; });
+    links.forEach(function(a, i){ a.classList.toggle('activo', i === act); });
+  }
+  addEventListener('scroll', alScroll, {passive:true}); alScroll();
+
+  // modo presentación: ← → saltan entre secciones
+  var todas = Array.prototype.slice.call(document.querySelectorAll('main > section'));
+  addEventListener('keydown', function(e){
+    if (visor.classList.contains('abierto')) { if (e.key === 'Escape') cerrar(); return; }
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    if (e.target.closest && e.target.closest('input,textarea,video')) return;
+    e.preventDefault();
+    var tops = todas.map(function(s){ return s.getBoundingClientRect().top; });
+    var i;
+    if (e.key === 'ArrowRight') { i = tops.findIndex(function(t){ return t > 90; }); }
+    else { for (var k = tops.length - 1; k >= 0; k--) { if (tops[k] < -10) { i = k; break; } } }
+    if (i >= 0 && todas[i]) window.scrollTo({top: todas[i].offsetTop - (i === 0 ? 0 : 20), behavior:'smooth'});
+  });
+
+  // visor de white label: video completo con sonido
+  var visor = document.getElementById('visor'), vv = document.getElementById('visor-video'), pie = document.getElementById('pie-visor');
+  var origen = null;
+  document.querySelectorAll('.obra').forEach(function(b){
+    b.addEventListener('click', function(){
+      origen = b;
+      vv.src = b.dataset.full;
+      pie.innerHTML = '<b>' + b.dataset.titulo + '</b> · ' + b.dataset.sub;
+      visor.classList.add('abierto');
+      document.body.style.overflow = 'hidden';
+      vv.muted = false;
+      var p = vv.play(); if (p && p.catch) p.catch(function(){});
+      document.getElementById('cerrar').focus();
+    });
+  });
+  function cerrar(){
+    vv.pause(); vv.removeAttribute('src'); vv.load();
+    visor.classList.remove('abierto');
+    document.body.style.overflow = '';
+    if (origen) origen.focus();
+  }
+  document.getElementById('cerrar').addEventListener('click', cerrar);
+  visor.addEventListener('click', function(e){ if (e.target === visor) cerrar(); });
+})();
+</script>
+</body>
+</html>
